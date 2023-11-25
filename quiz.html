@@ -1,0 +1,211 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+
+<body>
+    <div id="bg-image"
+        style="position: absolute; width: 100%; overflow-y: auto; z-index: -1; height: 100%; display: flex; opacity: 85%; background-image: url('https://wallpapercave.com/wp/wp3640547.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; filter: grayscale(5%) blur(3px) contrast(90%);">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent custom-navbar">
+        <a class="navbar-brand bg-transparent header-highlight" href="#">Qazaq Culture</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto header-highlight">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="culture.html">Culture</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="quiz.html">Quiz</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="contact.html">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="quiz-heading">
+        <h2>Qazaq quiz</h2>
+    </div>
+    <div class="quiz-container">
+        <div id="quiz">
+            <h2>Which dish embodies the essence of Qazaq culinary spirit?</h2>
+            <form id="answer-form">
+                <input type="radio" name="answer" value="Sushi">Sushi<br>
+                <input type="radio" name="answer" value="Beshbarmak">Beshbarmak<br>
+                <input type="radio" name="answer" value="Pizza">Pizza<br>
+                <input type="radio" name="answer" value="Tacos">Tacos<br>
+
+                <h2>What traditional instrument is used to play the Küy in Qazaq music?</h2>
+                <input type="radio" name="answer" value="Violin">Violin<br>
+                <input type="radio" name="answer" value="Dombra">Dombra<br>
+                <input type="radio" name="answer" value="Flute">Flute<br>
+                <input type="radio" name="answer" value="Piano">Piano<br>
+
+                <h2>What do Qazaq traditional dances reflect?</h2>
+                <input type="radio" name="answer" value="Modern city life">Modern city life<br>
+                <input type="radio" name="answer" value="Nomadic heritage">Nomadic heritage<br>
+                <input type="radio" name="answer" value="Western culture">Western culture<br>
+                <input type="radio" name="answer" value="Industrial revolution">Industrial revolution<br>
+
+                <h2>Which ritual celebrates a child's first steps in Qazaq traditions?</h2>
+                <input type="radio" name="answer" value="Nauryz">Nauryz<br>
+                <input type="radio" name="answer" value="Besikke Salu">Besikke Salu<br>
+                <input type="radio" name="answer" value="Tusau Kesu">Tusau Kesu<br>
+                <input type="radio" name="answer" value="Christmas">Christmas<br>
+
+                <h2>What does Qazaq traditional fashion emphasize?</h2>
+                <input type="radio" name="answer" value="Simplicity and minimalism">Simplicity and minimalism<br>
+                <input type="radio" name="answer" value="Functionality and elegance">Functionality and elegance<br>
+                <input type="radio" name="answer" value="Bright and flashy designs">Bright and flashy designs<br>
+                <input type="radio" name="answer" value="Experimental avant-garde styles">Experimental avant-garde
+                styles<br>
+
+                <button type="submit" onclick="checkAnswer()"
+                    class="btn btn-primary oval-button bg-transparent header-highlight"
+                    style="margin-top: 10px;">Submit</button>
+            </form>
+
+        </div>
+
+        <div id="results" style="display: none;">
+            <h2>Your Score:</h2>
+            <p id="score"></p>
+        </div>
+        <button id="submit-btn" class="btn btn-primary oval-button bg-transparent header-highlight"
+            style="margin-top: 10px;">Submit</button>
+        <button id="restart-btn" style="display: none;"
+            class="btn btn-primary oval-button bg-transparent header-highlight"
+            style="margin-top: 10px;">Restart</button>
+    </div>
+
+    <div class="footer-basic bg-transparent">
+        <footer>
+            <div class="social">
+                <a href="https://instagram.com/eshtenebilmeymin"><i class="fab fa-instagram fa-beat"
+                        style="color: white;"></i></a>
+                <a href="https://t.me/eshtenebilmeymin"><i class="fab fa-telegram-plane fa-beat"
+                        style="color: white"></i></a>
+            </div>
+            <div class="text-center p-3" style="color: white;">
+                © 2023 Kameliya:
+                <a class="text-white" href="#">QazaqCulture</a>
+            </div>
+        </footer>
+    </div>
+
+
+    <script>
+        const quizData = [
+            {
+                question: "Which dish embodies the essence of Qazaq culinary spirit?",
+                answers: ["Sushi", "Beshbarmak", "Pizza", "Tacos"],
+                correct: "Beshbarmak"
+            },
+            {
+                question: "What traditional instrument is used to play the Küy in Qazaq music?",
+                answers: ["Violin", "Dombra", "Flute", "Piano"],
+                correct: "Dombra"
+            },
+            {
+                question: "What do Qazaq traditional dances reflect?",
+                answers: ["Modern city life", "Nomadic heritage", "Western culture", "Industrial revolution"],
+                correct: "Nomadic heritage"
+            },
+            {
+                question: "Which ritual celebrates a child's first steps in Qazaq traditions?",
+                answers: ["Nauryz", "Besikke Salu", "Tusau Kesu", "Christmas"],
+                correct: "Tusau Kesu"
+            },
+            {
+                question: "What does Qazaq traditional fashion emphasize?",
+                answers: ["Simplicity and minimalism", "Functionality and elegance", "Bright and flashy designs", "Experimental avant-garde styles"],
+                correct: "Functionality and elegance"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const quiz = document.getElementById("quiz");
+        const resultsContainer = document.getElementById("results");
+        const submitButton = document.getElementById("submit-btn");
+        const restartButton = document.getElementById("restart-btn");
+
+        function loadQuiz() {
+            const currentQuizData = quizData[currentQuestion];
+            const answerForm = `
+        <h2>${currentQuizData.question}</h2>
+        <form id="answer-form">
+            ${currentQuizData.answers.map(answer => `<input type="radio" name="answer" value="${answer}">${answer}<br>`).join('')}
+        </form>
+    `;
+            quiz.innerHTML = answerForm;
+        }
+        function checkAnswer() {
+            const answerElements = document.getElementsByName("answer");
+            let selectedAnswer;
+            for (const answer of answerElements) {
+                if (answer.checked) {
+                    selectedAnswer = answer.value;
+                    break;
+                }
+            }
+
+            if (selectedAnswer === quizData[currentQuestion].correct) {
+                score++;
+            }
+
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuiz();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quiz.style.display = "none";
+            resultsContainer.style.display = "block";
+            resultsContainer.innerHTML = `<h2>Your score: ${score}</h2>`;
+            restartButton.style.display = "block";
+            submitButton.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            resultsContainer.style.display = "none";
+            restartButton.style.display = "none";
+            submitButton.style.display = "inline";
+            quiz.style.display = "block";
+            loadQuiz();
+        }
+
+        submitButton.addEventListener("click", checkAnswer);
+        restartButton.addEventListener("click", restartQuiz);
+
+        loadQuiz();
+
+        document.addEventListener("keypress", function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                checkAnswer();
+            }
+        }) 
+
+    </script>
+</body>
+
+</html>
